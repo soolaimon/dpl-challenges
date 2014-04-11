@@ -1,0 +1,29 @@
+<div id="tagline">
+	&#8220;Family Fitness, Self Defense, Hard Training&#8221;
+</div>
+<div id="mainText">
+	<%= show_flash_message %>
+	<h1>OUR STUDENTS</h1>
+	<span>Sort By Discipline:</span> <%= select_tag('sort', options_for_select(@disciplines, :include_blank => true)) %>
+	<div id="students">
+	  <% unless @students.empty? %>
+  		<% @students.each do |student| %>
+  			<div class="student">
+  				<%= link_to(image_tag(student.main_image.url(:small), :alt => student.name), student_path(student)) %>
+  				<h4><%= link_to(student.name.titleize, student_path(student)) %></h4>
+  				<span title="<%= student.discipline %>"></span>
+  			</div>
+  		<% end %>
+  		<br clear="all" />
+  	<% end %>
+	</div>
+	
+	<div id="login">
+		<% if current_account %>
+			<%= link_to('Update Profile', edit_student_path(current_account.student)) %> <%= image_tag('lock.png') %>
+		<% else %>
+			<%= link_to('Student Login in', login_path) %> <%= image_tag('lock.png') %>
+		<% end %>
+	</div>
+</div>
+<br clear="all" />

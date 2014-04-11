@@ -1,0 +1,6 @@
+<h1>Add a student</h1>
+
+<% form_for :student, @student, :url => admin_students_path, :html => { :multipart => true } do |f| -%>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+	<p><%= f.submit('Save') %> -or- <%= link_to('cancel', admin_students_path) %></p>
+<% end -%>

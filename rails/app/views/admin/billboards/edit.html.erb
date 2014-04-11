@@ -1,0 +1,7 @@
+<h1>Update Billboard</h1>
+
+<% form_for @billboard, :url => admin_billboard_path(@billboard), :html => { :multipart => true } do |f| -%>
+	<%= image_tag(@billboard.image.url(:main)) %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+	<p><%= f.submit('Update') %> -or- <%= link_to('cancel', admin_billboards_path) %></p>
+<% end -%>

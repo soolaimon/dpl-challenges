@@ -1,0 +1,27 @@
+<h1>Advertisements</h1>
+
+<div id="controls">
+	<%= link_to(image_tag('add.png', :alt => 'Add a new Ad') + ' Add a new Ad', new_admin_advertisement_path, :title => 'Add a new Ad') %>
+	<p><%= page_entries_info(@advertisements) %></p>
+</div>
+
+<% unless @advertisements.empty? %>
+  <%= will_paginate(@advertisements) %>
+	<table border="0" cellspacing="0" cellpadding="0" class="itemtable">
+		<tr>
+			<th>Image <small>(click to edit)</small></th>
+			<th>Link</th>
+			<th>Date Added</th>
+			<th>&nbsp;</th>
+		</tr>
+		<% @advertisements.each do |advertisement| %>
+			<tr class="<%= cycle('odd', 'even') %>">
+				<td><%= link_to(image_tag(advertisement.image.url(:thumb)), edit_admin_advertisement_path(advertisement)) %></td>
+				<td><%= advertisement.link %></td>
+				<td><%= advertisement.created_at.strftime('%m/%d/%Y') %></td>
+				<td><%= link_to(image_tag('delete.png'), admin_advertisement_path(advertisement), :method => :delete, :confirm => 'Are you sure you want to remove this?') %></td>
+			</tr>
+		<% end %>
+	</table>
+	<%= will_paginate(@advertisements) %>
+<% end %>

@@ -1,0 +1,40 @@
+<div id="tagline">
+	&#8220;Family Fitness, Self Defense, Hard Training&#8221;
+</div>
+<br />
+<%= show_flash_message %>
+<div id="mainMap">
+	<iframe width="335" height="382" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;q=11416+FM+620+North,+Suite+A,+Austin,+TX+78726&amp;ie=UTF8&amp;hq=&amp;hnear=11416+N+Farm+to+Market+Road+620,+Austin,+Travis,+Texas+78726&amp;z=14&amp;ll=30.453534,-97.828818&amp;output=embed"></iframe>
+</div>
+<div id="mainText">
+	<h1>CONTACT</h1>
+	<p>
+		<strong>John's Gym</strong><br />
+		<address>
+		  11416 FM 620 North, Suite A<br />
+      Austin, TX 78726<br />
+      (512) 547-6739<br />
+		</address>
+	</p>
+	<br />
+	<% form_tag '/contact', {:class => "form"} do %>
+	  <p>
+			<%= label_tag(:name) %><br />
+			<%= text_field_tag(:name, '', :class => 'field') %>
+		</p>
+		<p>
+			<%= label_tag(:phone) %><br />
+			<%= text_field_tag(:phone, '', :class => 'field') %>
+		</p>
+		<p>
+			<%= label_tag(:email) %><br />
+			<%= text_field_tag(:email, '', :class => 'field') %>
+		</p>
+		<p>
+			<%= label_tag(:comments) %><br />
+			<%= text_area_tag(:comments, '', :class => 'field') %>
+		</p>
+		<p class="submitrow"><%= image_submit_tag('submit.png') %></p>
+	<% end -%>
+</div>
+<br clear="all" />

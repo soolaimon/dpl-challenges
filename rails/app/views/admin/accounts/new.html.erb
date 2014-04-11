@@ -1,0 +1,6 @@
+<h1>Add an Account</h1>
+
+<% form_for :account, @account, :url => admin_accounts_path do |f| -%>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+	<p><%= f.submit('Save') %> -or- <%= link_to('cancel', admin_accounts_path) %></p>
+<% end -%>

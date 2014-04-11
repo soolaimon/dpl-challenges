@@ -1,0 +1,6 @@
+<h1>Add a Program to <%= @schedule.datetime %></h1>
+
+<% form_for :program, @program, :url => admin_schedule_programs_path(@schedule) do |f| -%>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+	<p><%= f.submit('Save') %> -or- <%= link_to('cancel', admin_schedule_programs_path(@schedule)) %></p>
+<% end -%>

@@ -1,0 +1,16 @@
+--- 
+javascripts: 
+- scripts: 
+  - jquery
+  - cycle
+  - prettyPhoto
+  - application
+- admin:
+  - jquery
+  - admin
+stylesheets: 
+- styles: 
+  - main
+  - prettyPhoto
+- admin:
+  - admin

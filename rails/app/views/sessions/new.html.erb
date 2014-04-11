@@ -1,0 +1,25 @@
+<div id="tagline">
+	&#8220;Family Fitness, Self Defense, Hard Training&#8221;
+</div>
+<div id="mainText">
+	<h1>LOGIN</h1>
+	<div id="loginform">
+		<% form_for @session, :url => sessions_path do |f| %>
+			<div id="fields">
+			  <div class="field">
+			  	<%= f.label :email %><br />
+			    <%= f.text_field :email %>
+			  </div>  
+				<div class="field">
+					<%= f.label :password %><br />
+			    <%= f.password_field :password %>
+				</div>
+			</div>
+		  <div id="err">
+		  	<%= f.error_messages %>
+		  </div>
+			<br clear="all" />
+		  <%= f.submit "Submit" %>
+		<% end %>
+	</div>
+</div>

@@ -1,0 +1,6 @@
+<h1>Update <%= @program.course.title %> class for <%= @schedule.datetime %></h1>
+
+<% form_for @program, :url => admin_schedule_program_path(@schedule, @program) do |f| -%>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+	<p><%= f.submit('Update') %> -or- <%= link_to('cancel', admin_schedule_programs_path(@schedule)) %></p>
+<% end -%>

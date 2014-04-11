@@ -1,0 +1,7 @@
+<h1>Update Advertisement</h1>
+
+<% form_for @advertisement, :url => admin_advertisement_path(@advertisement), :html => { :multipart => true } do |f| -%>
+	<%= image_tag(@advertisement.image.url(:main)) %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+	<p><%= f.submit('Update') %> -or- <%= link_to('cancel', admin_advertisements_path) %></p>
+<% end -%>

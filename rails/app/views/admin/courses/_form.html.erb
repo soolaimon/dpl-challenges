@@ -1,0 +1,43 @@
+<div id="fields">
+	<div id="help">
+		<ul>
+			<li>Title is the name of the discipline</li>
+			<li>Caption is a small description of discipline</li>
+			<li>Caption allows for <b>HTML</b>, and line breaks.</li>
+		</ul>
+	</div>
+	<fieldset>
+		<%= link_to(image_tag('help.png'), '#help', :class => 'help') %>
+		<legend>Fields</legend>
+		<div class="field">
+			<%= f.label(:title) %>
+			<%= f.text_field(:title) %>
+		</div>
+		
+		<div class="field">
+			<%= f.label(:course_type) %>
+			<%= f.select(:course_type, Course::TYPES.map { |t| t }) %>
+		</div>
+
+		<div class="field">
+			<%= f.label(:caption) %>
+			<%= f.text_area(:caption) %>
+		</div>
+		
+		<div class="field">
+			<%= f.label(:instructors, 'Instructors who teach this:') %>
+			<ul>
+				<% Instructor.all.each do |instructor| %>
+					<li>
+						<%= check_box_tag("course[instructor_ids][]", instructor.id, @course.instructors.include?(instructor), { :id => "course_instructor_ids_#{instructor.id}"}) %>
+						<%= label_tag("course_instructor_ids_#{instructor.id}", instructor.name) %>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+	</fieldset>
+</div>
+<div id="notes">
+	<%= error_messages_for :course %>
+</div>
+<br clear="all" />

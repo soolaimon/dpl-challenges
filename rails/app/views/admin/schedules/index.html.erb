@@ -1,0 +1,30 @@
+<h1>Schedules</h1>
+
+<div id="controls">
+	<%# link_to(image_tag('add.png', :alt => 'Add new schedule') + ' Add Schedule', new_admin_schedule_path, :title => 'Add new schedule') %>
+	<p><%# page_entries_info(@schedules) %></p>
+	<p>This is managed through Google Calendar. <%= link_to('Go To Calendar >', 'http://calendar.google.com', :target => '_blank') %>
+</div>
+
+<% unless @schedules.empty? %>
+  <%= will_paginate(@schedules) %>
+	<table border="0" cellspacing="0" cellpadding="0" class="itemtable">
+		<tr>
+			<th>Date of classes <small>(click to edit)</small></th>
+			<th># Classes</th>
+			<th>Add class</th>
+			<th>Date Added</th>
+			<th>&nbsp;</th>
+		</tr>
+		<% @schedules.each do |schedule| %>
+			<tr class="<%= cycle('odd', 'even') %>">
+				<td><%= link_to(schedule.datetime, edit_admin_schedule_path(schedule)) %></td>
+				<td><%= schedule.programs.size %></td>
+				<td><%= link_to('View Classes', admin_schedule_programs_path(schedule)) %></td>
+				<td><%= schedule.created_at.strftime('%m/%d/%Y') %></td>
+				<td><%= link_to(image_tag('delete.png'), admin_schedule_path(schedule), :method => :delete, :confirm => 'Are you sure you want to remove this?') %></td>
+			</tr>
+		<% end %>
+	</table>
+	<%= will_paginate(@schedules) %>
+<% end %>

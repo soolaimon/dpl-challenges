@@ -1,0 +1,56 @@
+<div id="fields">
+	<div id="help">
+		<ul>
+			<li>Image size is <b>334x547</b>. They will be resized if they are larger.</li>
+			<li>Image type must be <b>.jpg, .png, .gif</b></li>
+			<li>Name is the name of this page.</li>
+			<li>Permalink is <strong>url</strong> you want displayed for this page</li>
+			<li><span>Note that the Permalink will be converted to a proper URL encoding.</span>
+			  <ul>
+			    <li>No uppercase letters</li>
+			    <li>Only underscore (_) and dash (-) are valid separators</li>
+			    <li>Numbers are ok.</li>
+			    <li>No periods, or file extensions like ".html"</li>
+			  </ul>
+			</li>
+			<li>Text is the description on this page.</li>
+		</ul>
+	</div>
+	<fieldset>
+		<%= link_to(image_tag('help.png'), '#help', :class => 'help') %>
+		<legend>Fields</legend>
+		<div class="field">
+			<%= f.label(:image) %>
+			<%= f.file_field(:image) %>
+		</div>
+		<div class="field">
+			<%= f.label(:name) %>
+			<%= f.text_field(:name) %>
+		</div>
+		<div class="field">
+			<%= f.label(:permalink) %>
+			<%= f.text_field(:permalink) %>
+		</div>
+		<div class="field">
+			<%= f.label(:text) %>
+			<%= f.text_area(:text, :rows => 8, :cols => 39) %>
+		</div>
+		<h2>Meta Data</h2>
+		<div class="field">
+		  <%= f.label(:title) %>
+		  <%= f.text_field(:title) %>
+		</div>
+		<div class="field">
+		  <%= f.label(:keywords) %>
+		  <%= f.text_field(:keywords) %>
+		</div>
+		<div class="field">
+		  <%= f.label(:description) %>
+		  <%= f.text_area(:description, :rows => 8, :cols => 39) %>
+		</div>
+	</fieldset>
+</div>
+<div id="notes">
+	<%= error_messages_for :billboard %>
+</div>
+<br clear="all" />

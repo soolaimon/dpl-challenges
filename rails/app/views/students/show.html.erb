@@ -1,0 +1,74 @@
+<div id="tagline">
+	&#8220;Family Fitness, Self Defense, Hard Training&#8221;
+</div>
+<div id="mainText">
+	<%= show_flash_message %>
+	<div id="infoArea">
+		<% if current_account and current_account.student == @student %>
+			<%= link_to('Update Profile', edit_student_path(current_account.student), :id => "profileUpdate") %>
+			<%= link_to('Logout', logout_path, :id => "logout") %>
+		<% end %>
+		<div id="mainImg">
+			<%= image_tag(@student.main_image.url(:main), :alt => @student.name) %>
+		</div>
+		<div id="info">
+			<h1><%= @student.name %></h1>
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td><strong>Born:</strong></td>
+					<td><%= @student.birthplace %></td>
+				</tr>
+				<tr>
+					<td><strong>Training out of:</strong></td>
+					<td><%= @student.hometown %></td>
+				</tr>
+				<tr>
+					<td><strong>Age:</strong></td>
+					<td><% @student.age %></td>
+				</tr>
+			</table>
+			<br />
+			<p><strong>Discipline and Rank</strong><br />
+				<%= @student.discipline %> - <%= @student.rank %>
+			</p>
+			<br />
+			<p><strong>Strengths</strong><br />
+				<%= @student.strengths %>
+			</p>
+			<br />
+			<% unless current_account and current_account.student == @student %>
+			<span class="st_twitter_large" displayText="Tweet"></span>
+			<span class="st_facebook_large" displayText="Facebook"></span>
+			<span class="st_ybuzz_large" displayText="Yahoo! Buzz"></span>
+			<span class="st_gbuzz_large" displayText="Google Buzz"></span>
+			<span class="st_email_large" displayText="Email"></span>
+			<span class="st_sharethis_large" displayText="ShareThis"></span>
+			<% end %>
+		</div>
+		<div id="addImages">
+			<%= link_to(image_tag(@student.add_image1.url(:main)), @student.add_image1.url, :rel => 'prettyPhoto') unless @student.add_image1_file_name.nil? %>
+			<%= link_to(image_tag(@student.add_image2.url(:main)), @student.add_image2.url, :rel => 'prettyPhoto') unless @student.add_image2_file_name.nil? %>
+			<br />
+			<%= link_to(image_tag(@student.add_image3.url(:main)), @student.add_image3.url, :rel => 'prettyPhoto') unless @student.add_image3_file_name.nil? %>
+			<%= link_to(image_tag(@student.add_image4.url(:main)), @student.add_image4.url, :rel => 'prettyPhoto') unless @student.add_image4_file_name.nil? %>
+		</div>
+		<br clear="all" />
+	</div>
+	<div id="bioArea">
+		<div id="bio">
+			<h2>Biography</h2>
+			<div>
+				<%= @student.bio.nl2br %>
+			</div>
+		</div>
+		<div id="videoArea">
+			<h2>Videos</h2>
+			<div id="svideo">
+				<a href="<%= "http://www.youtube.com/watch?v=#{@student.youtube_key}" %>" rel="prettyPhoto"><img src="<%= "http://img.youtube.com/vi/#{@student.youtube_key}/0.jpg" %>" width="317" height="255" /></a>
+			</div>
+		</div>
+	</div>
+</div>
+<br clear="all" />
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher:'0010cdf2-55ee-48a2-a05d-9205413aceaf'});</script>

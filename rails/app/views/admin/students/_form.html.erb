@@ -1,0 +1,80 @@
+<div id="fields">
+	<div id="help">
+		<ul>
+			<li>Main Image size is <b>280x350</b>. The smaller ones are shrunk to <b>100x125</b></li>
+			<li>Image types must be <b>.jpg, .png, .gif</b></li>
+			<li>Name is required</li>
+			<li>Youtube Key is the video ID</b></li>
+			<li>Youtube Key Example:
+				<ul>
+					<li>http://www.youtube.com/watch?v=<b style="color: blue;">FOtJUmiUc09</b>&feature=fvst</li>
+				</ul>
+			</li>
+			<li>Strengths should be separated by a comma (,)</li>
+		</ul>
+	</div>
+	<fieldset>
+		<%= link_to(image_tag('help.png'), '#help', :class => 'help') %>
+		<legend>Fields</legend>
+		<div class="field">
+			<%= f.label(:main_image) %>
+			<%= f.file_field(:main_image) %>
+		</div>
+		<div class="field">
+			<%= f.label(:add_image1, 'Additional Image') %>
+			<%= f.file_field(:add_image1) %>
+		</div>
+		<div class="field">
+			<%= f.label(:add_image2, 'Additional Image') %>
+			<%= f.file_field(:add_image2) %>
+		</div>
+		<div class="field">
+			<%= f.label(:add_image3, 'Additional Image') %>
+			<%= f.file_field(:add_image3) %>
+		</div>
+		<div class="field">
+			<%= f.label(:add_image4, 'Additional Image') %>
+			<%= f.file_field(:add_image4) %>
+		</div>
+		<div class="field">
+			<%= f.label(:name) %>
+			<%= f.text_field(:name) %>
+		</div>
+		<div class="field">
+			<%= f.label(:age) %>
+			<%= f.date_select(:age, :start_year => 1940, :end_year => Date.today.year, :order => [:day, :month, :year]) %>
+		</div>
+		<div class="field">
+			<%= f.label(:hometown) %>
+			<%= f.text_field(:hometown) %>
+		</div>
+		<div class="field">
+			<%= f.label(:birthplace) %>
+			<%= f.text_field(:birthplace) %>
+		</div>
+		<div class="field">
+			<%= f.label(:discipline) %>
+			<%= f.select(:discipline, Course.all.map { |d| d.title }) %>
+		</div>
+		<div class="field">
+			<%= f.label(:rank) %>
+			<%= f.text_field(:rank) %>
+		</div>
+		<div class="field">
+			<%= f.label(:youtube_key) %>
+			<%= f.text_field(:youtube_key) %>
+		</div>
+		<div class="field">
+			<%= f.label(:strengths) %>
+			<%= f.text_area(:strengths, :rows => 5, :cols => 40) %>
+		</div>
+		<div class="field">
+			<%= f.label(:bio) %>
+			<%= f.text_area(:bio) %>
+		</div>
+	</fieldset>
+</div>
+<div id="notes">
+	<%= error_messages_for :student %>
+</div>
+<br clear="all" />

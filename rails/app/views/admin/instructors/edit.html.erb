@@ -1,0 +1,6 @@
+<h1>Update Instructor</h1>
+
+<% form_for @instructor, :url => admin_instructor_path(@instructor), :html => { :multipart => true } do |f| -%>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+	<p><%= f.submit('Update') %> -or- <%= link_to('cancel', admin_instructors_path) %></p>
+<% end -%>

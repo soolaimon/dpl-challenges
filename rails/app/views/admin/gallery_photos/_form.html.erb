@@ -1,0 +1,25 @@
+<div id="fields">
+	<div id="help">
+		<ul>
+			<li>Image size is <b>800x485</b>. They will be resized if they are larger.</li>
+			<li>Image type must be <b>.jpg, .png, .gif</b></li>
+			<li>Caption is a snippet describing the photo.</li>
+		</ul>
+	</div>
+	<fieldset>
+		<%= link_to(image_tag('help.png'), '#help', :class => 'help') %>
+		<legend>Fields</legend>
+		<div class="field">
+			<%= f.label(:image) %>
+			<%= f.file_field(:image) %>
+		</div>
+		<div class="field">
+			<%= f.label(:caption) %>
+			<%= f.text_field(:caption) %>
+		</div>
+	</fieldset>
+</div>
+<div id="notes">
+	<%= error_messages_for :gallery_photo %>
+</div>
+<br clear="all" />

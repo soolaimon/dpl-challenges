@@ -1,0 +1,41 @@
+<div id="fields">
+	<div id="help">
+		<ul>
+			<li>Icon size is <b>120x120</b>. They will be resized if they are larger.</li>
+			<li>Icon type must be <b>.jpg, .png, .gif</b></li>
+			<li>Title should be short and to the point</li>
+			<li>Link is where the user is sent when clicking on the image</li>
+			<li>Link Examples:
+				<ul>
+					<li>Internal: <b>/some-page</b></li>
+					<li>External: <b>http://www.somewebsite.com</b></li>
+				</ul>
+			</li>
+			<li>Text should around <b>3</b> sentences.</li>
+		</ul>
+	</div>
+	<fieldset>
+		<%= link_to(image_tag('help.png'), '#help', :class => 'help') %>
+		<legend>Fields</legend>
+		<div class="field">
+			<%= f.label(:icon) %>
+			<%= f.file_field(:icon) %>
+		</div>
+		<div class="field">
+			<%= f.label(:title) %>
+			<%= f.text_field(:title) %>
+		</div>
+		<div class="field">
+			<%= f.label(:link) %>
+			<%= f.text_field(:link) %>
+		</div>
+		<div class="field">
+			<%= f.label(:text) %>
+			<%= f.text_area(:text, :rows => 8, :cols => 35) %>
+		</div>
+	</fieldset>
+</div>
+<div id="notes">
+	<%= error_messages_for :special %>
+</div>
+<br clear="all" />

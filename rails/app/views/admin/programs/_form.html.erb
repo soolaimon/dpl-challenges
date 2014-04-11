@@ -1,0 +1,37 @@
+<div id="fields">
+	<div id="help">
+		<ul>
+			<li>Start time and End time are in <strong>24 hour</strong> clock time. <strong>13</strong> is 1 in the afternoon.</li>
+			<li>Status can be set as <strong>cancelled</strong>.</li>
+		</ul>
+	</div>
+	<fieldset>
+		<%= link_to(image_tag('help.png'), '#help', :class => 'help') %>
+		<legend>Fields</legend>
+		<div class="field">
+			<%= f.label(:start_time) %>
+			<%= f.time_select(:start_time, :minute_step => 15) %>
+		</div>
+		<div class="field">
+			<%= f.label(:end_time) %>
+			<%= f.time_select(:end_time, :minute_step => 15) %>
+		</div>
+		<div class="field">
+			<%= f.label(:instructor_id, 'Instructor') %>
+			<%= f.select(:instructor_id, Instructor.all.map { |s| [s.name, s.id] }) %>
+		</div>
+		<div class="field">
+			<%= f.label(:course_id, 'Class') %>
+			<%= f.select(:course_id, Course.all.map { |c| [c.title, c.id] }) %>
+		</div>
+		<div class="field">
+			<%= f.label(:status) %>
+			<%= f.select(:status, [[""], ["Cancelled"]]) %>
+		</div>
+		<%= f.hidden_field(:date) %>
+	</fieldset>
+</div>
+<div id="notes">
+	<%= error_messages_for :scedule %>
+</div>
+<br clear="all" />

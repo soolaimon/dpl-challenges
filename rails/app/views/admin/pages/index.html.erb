@@ -1,0 +1,29 @@
+<h1>Additional Pages</h1>
+
+<div id="controls">
+	<%= link_to(image_tag('add.png', :alt => 'Add new page') + ' Add Page', new_admin_page_path, :title => 'Add new page') %>
+	<p><%= page_entries_info(@pages) %></p>
+</div>
+
+<% unless @pages.empty? %>
+  <%= will_paginate(@pages) %>
+	<table border="0" cellspacing="0" cellpadding="0" class="itemtable">
+		<tr>
+			<th>Image <small>(click to edit)</small></th>
+			<th>Name</th>
+			<th>Permalink</th>
+			<th>Date Added</th>
+			<th>&nbsp;</th>
+		</tr>
+		<% @pages.each do |page| %>
+			<tr class="<%= cycle('odd', 'even') %>">
+				<td><%= link_to(image_tag(page.image.url(:thumb)), edit_admin_page_path(page)) %></td>
+				<td><%= page.name %></td>
+				<td><%= page.permalink %></td>
+				<td><%= page.created_at.strftime('%m/%d/%Y') %></td>
+				<td><%= link_to(image_tag('delete.png'), admin_page_path(page), :method => :delete, :confirm => 'Are you sure you want to remove this?') %></td>
+			</tr>
+		<% end %>
+	</table>
+	<%= will_paginate(@pages) %>
+<% end %>

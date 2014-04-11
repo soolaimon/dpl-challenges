@@ -1,0 +1,11 @@
+<h1>Update Student</h1>
+
+<% form_for @student, :url => admin_student_path(@student) do |f| -%>
+	<%= image_tag(@student.main_image.url(:main)) %>
+	<%= image_tag(@student.add_image1.url(:thumb)) unless @student.add_image1_file_name.nil? %>
+	<%= image_tag(@student.add_image2.url(:thumb)) unless @student.add_image2_file_name.nil? %>
+	<%= image_tag(@student.add_image3.url(:thumb)) unless @student.add_image3_file_name.nil? %>
+	<%= image_tag(@student.add_image4.url(:thumb)) unless @student.add_image4_file_name.nil? %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+	<p><%= f.submit('Update') %> -or- <%= link_to('cancel', admin_students_path) %></p>
+<% end -%>

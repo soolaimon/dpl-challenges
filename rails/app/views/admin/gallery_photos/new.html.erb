@@ -1,0 +1,6 @@
+<h1>Upload Photo</h1>
+
+<% form_for :gallery_photo, @photo, :url => admin_gallery_photos_path, :html => { :multipart => true } do |f| -%>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+	<p><%= f.submit('Save') %> -or- <%= link_to('cancel', admin_gallery_photos_path) %></p>
+<% end -%>

@@ -1,0 +1,29 @@
+<h1>Videos</h1>
+
+<div id="controls">
+	<%= link_to(image_tag('add.png', :alt => 'Upload Video') + ' Upload Video', new_admin_video_path, :title => 'Upload Video') %>
+	<p><%= page_entries_info(@videos) %></p>
+</div>
+
+<% unless @videos.empty? %>
+  <%= will_paginate(@videos) %>
+	<table border="0" cellspacing="0" cellpadding="0" class="itemtable">
+		<tr>
+			<th>Thumbnail <small>(click to edit)</small></th>
+			<th>Kind</th>
+			<th>Preview</th>
+			<th>Date Added</th>
+			<th>&nbsp;</th>
+		</tr>
+		<% @videos.each do |video| %>
+			<tr class="<%= cycle('odd', 'even') %>">
+				<td><a href="<%= edit_admin_video_path(video) %>"><img src="<%= "http://img.youtube.com/vi/#{video.youtube_key}/1.jpg" %>" width="75" height="55" /></a></td>
+				<td><%= video.kind %></td>
+				<td><a href="http://www.youtube.com/watch?v=<%= video.youtube_key %>" target="_blank">preview</a></td>
+				<td><%= video.created_at.strftime('%m/%d/%Y') %></td>
+				<td><%= link_to(image_tag('delete.png'), admin_video_path(video), :method => :delete, :confirm => 'Are you sure you want to remove this?') %></td>
+			</tr>
+		<% end %>
+	</table>
+	<%= will_paginate(@videos) %>
+<% end %>

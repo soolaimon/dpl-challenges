@@ -1,0 +1,78 @@
+<div id="billboardWrap">
+	<% unless @billboards.empty? %>
+		<div id="controls">
+
+		</div>
+		<div id="billboard">
+			<% @billboards.each do |billboard| %>
+				<%= link_to(image_tag(billboard.image.url(:main)), billboard.link) %>
+			<% end %>
+		</div>
+	<% end %>
+</div>
+<div id="homeLeft">
+	<h1 id="homeTitle">&#8220;Martial Arts Training and Family Fitness, Austin, Texas&#8221;</h1>
+	<div id="abstract">
+		<p>John here. I want to personally say thank you for checking out John’s Gym in the Cedar Park and Austin area. I know you have some options in terms of what you do for exercise, so I want to say "Thank You" for choosing us.</p>
+        <p>John's Gym, Austin, Texas is a <strong>martial arts</strong> and <strong>family fitness</strong> gym. We offer <a href="http://www.johnsgymatx.com/brazilian-jiu-jitsu-classes">Jiu Jitsu</a>, <a href="http://www.johnsgymatx.com/muay-thai-kickboxing-classes">Muay Thai</a>, and <a href="http://www.johnsgymatx.com/pro-boxing-technique">Boxing</a> as self defense classes; as well as, <a href="http://www.johnsgymatx.com/cardio-kickboxing-classes">cardio kickboxing</a>, <a href="http://www.johnsgymatx.com/cardio-boxing-classes">cardio boxing</a>, <a href="http://www.johnsgymatx.com/strength-training">Fit to the Core</a>, and a <a href="/strike-fit-cardio-boxing-kickboxing">Strike Fit Class</a> that is designed to give you a more dynamic workout beyond the heavy bags.</p>
+        <p>At John’s gym we’re really proud to be offering the best instructors in Austin all under one roof. Our <a href="http://www.johnsgymatx.com/jiujitsu-black-belt-instructor">Brazilian Jiu Jitsu instructor</a> hails from Rio De Janeiro, Brazil and has won many high level BJJ titles at an international level. Our Muay Thai instructor has been training Muay Thai from a young age, and participating in MMA fights, as well as training MMA fighters. Our Boxing instructor is a Certified USA boxing coach and was a Jr. Olympic champion, Golden Gloves and Texas Golden Gloves champion.  Our Fit to the Core instructor and his team placed second in the World Kettle bell Championships.</p>
+        <p>However, It’s really our family friendly and fun vibe that will change your idea of going to the gym. At John’s Gym you will feel the support of your fellow members and the instructors and you will probably make a friend or two along the way.</p>
+        <p>Come in today and feel the difference our gym will make in you and your family’s life.</p>
+	</div>
+	<div id="specialsWrap">
+		<% unless @specials.empty? %>
+			<% @specials.each_with_index do |special, index| %>
+				<div class="special <%= 'last' if index == (@specials.size - 1) %>">
+					<%= link_to(image_tag(special.icon.url(:main)), special.link, :class => 'speclink') %>
+					<h3><%= link_to(special.title, special.link) %></h3>
+					<p>
+						<%= special.text %><br />
+						<%= link_to('Check Here >', special.link) %>
+					</p>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+</div>
+<div id="homeRight">
+	<div id="newsletter">
+	  <script type="text/javascript" src="https://do149.infusionsoft.com/app/form/iframe/b805f02fd3f3fe4d5c0847092d84751a"></script>
+    <br clear="all" />
+	</div>
+	<div id="videoWrap">
+		<div id="video">
+			<% if @kvideo.nil? %>
+				<%= link_to(image_tag('sample-video.png'), '#', :id => "kids") %>
+			<% else %>
+				<a href="<%= "http://www.youtube.com/watch?v=#{@kvideo.youtube_key}" %>" id="kids" rel="prettyPhoto"><img src="<%= "http://img.youtube.com/vi/#{@kvideo.youtube_key}/0.jpg" %>" width="335" height="264" /></a>
+			<% end %>
+			<% if @avideo.nil? %>
+				<%= link_to(image_tag('sample-video.png'), '#', :id => 'adults') %>
+			<% else %>
+				<a href="<%= "http://www.youtube.com/watch?v=#{@avideo.youtube_key}" %>" id="adults" rel="prettyPhoto"><img src="<%= "http://img.youtube.com/vi/#{@avideo.youtube_key}/0.jpg" %>" width="335" height="264" /></a>
+			<% end %>
+		</div>
+		<div id="videobtns">
+			<%= link_to(image_tag('kids-btn.png'), '#kids') %>
+			<%= link_to(image_tag('adults-btn.png'), '#adults') %>
+		</div>
+	</div>
+	<% unless @ad.nil? %>
+  	<div class="adWrap">
+  		<%= link_to(image_tag(@ad.image.url(:main)), @ad.link, :rel => 'nofollow', :target => '_blank') %>
+  	</div>
+	<% end %>
+	<div id="photoWrap">
+		<h2>PHOTOS</h2>
+		<%= link_to(image_tag('photo-left.png'), '#', :class => 'photoleft') %>
+		<%= link_to(image_tag('photo-right.png'), '#', :class => 'photoright') %>
+		<div id="photos">
+			<% unless @photos.empty? %>
+				<% @photos.each do |photo| %>
+					<div class="photo"><%= link_to(image_tag(photo.image.url(:main), :alt => photo.caption), photo.image.url(:large), :rel => 'prettyPhoto') %></div>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
+<br clear="all" />

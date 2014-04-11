@@ -1,0 +1,7 @@
+<h1>Update Page</h1>
+
+<% form_for @page, :url => admin_page_path(@page), :html => { :multipart => true } do |f| -%>
+	<%= image_tag(@page.image.url(:main)) %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+	<p><%= f.submit('Update') %> -or- <%= link_to('cancel', admin_pages_path) %></p>
+<% end -%>

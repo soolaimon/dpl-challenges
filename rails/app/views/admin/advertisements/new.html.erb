@@ -1,0 +1,6 @@
+<h1>Add an Advertisement</h1>
+
+<% form_for :advertisement, @advertisement, :url => admin_advertisements_path, :html => { :multipart => true } do |f| -%>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+	<p><%= f.submit('Save') %> -or- <%= link_to('cancel', admin_advertisements_path) %></p>
+<% end -%>

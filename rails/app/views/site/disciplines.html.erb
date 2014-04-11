@@ -1,0 +1,29 @@
+<div id="tagline">
+	&#8220;Family Fitness, Self Defense, Hard Training&#8221;
+</div>
+<div id="mainText">
+	<h1>DISCIPLINES</h1>
+	<% unless @courses.empty? %>
+		<% @courses.each do |course| %>
+			<div class="discipline">
+				<h4><%= course.title.titleize %></h4>
+				<div class="description">
+					<%= course.caption.nl2br %>
+				</div>
+				<strong>
+				<% if course.instructors.empty? %>
+					This discipline has no instructors
+				<% else %>
+					Instructors: 
+					<% course.instructors.each_with_index do |instructor, index| %> 
+						<%= instructor.name %>
+						<%= ", " unless index == course.instructors.size - 1 %>
+					<% end %>
+				<% end %>
+				</strong>
+			</div>
+		<% end %>
+		<br clear="all" />
+	<% end %>
+</div>
+<br clear="all" />

@@ -1,0 +1,27 @@
+<div id="tagline">
+	&#8220;Family Fitness, Self Defense, Hard Training&#8221;
+</div>
+<div id="mainText">
+	<div id="scheduleArea">
+		<h1>SCHEDULE</h1>
+		<div id="caption">
+			All classes start on time*. Please show up on time. If you're taking a Cardio Boxing or Cardio Kickboxing class, please show up 15 minutes early to wrap your hands. Thanks, John's Gym
+      <br /><br />
+      <small><strong>*Schedule and instructors are subject to change without notice</strong></small>
+		</div>
+		<div id="schedules">
+		  <iframe src="https://www.google.com/calendar/embed?mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=l1ah365kmmmnr3iugmen3cjr40%40group.calendar.google.com&amp;color=%23182C57&amp;ctz=America%2FChicago" style=" border-width:0 " width="940" height="600" frameborder="0" scrolling="no"></iframe>
+		</div>
+	</div>
+	<div id="ads">
+		<% unless @ads.empty? %>
+			<% @ads.each do |ad| %>
+				<div class="adWrap">
+					<%= link_to(image_tag(ad.image.url(:main)), ad.link, :rel => 'nofollow', :target => '_blank') %>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+	<br clear="all" />
+</div>
+<br clear="all" />

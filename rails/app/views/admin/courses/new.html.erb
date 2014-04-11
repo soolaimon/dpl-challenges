@@ -1,0 +1,6 @@
+<h1>Add a discipline</h1>
+
+<% form_for :course, @course, :url => admin_courses_path do |f| -%>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+	<p><%= f.submit('Save') %> -or- <%= link_to('cancel', admin_courses_path) %></p>
+<% end -%>

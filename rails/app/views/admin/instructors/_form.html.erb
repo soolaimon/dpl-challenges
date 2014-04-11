@@ -1,0 +1,43 @@
+<div id="fields">
+	<div id="help">
+		<ul>
+			<li>Image size is <b>290x160</b>. They will be resized if they are larger.</li>
+			<li>Image type must be <b>.jpg, .png, .gif</b></li>
+			<li>Name is required</li>
+		</ul>
+	</div>
+	<fieldset>
+		<%= link_to(image_tag('help.png'), '#help', :class => 'help') %>
+		<legend>Fields</legend>
+		<div class="field">
+			<%= f.label(:image) %>
+			<%= f.file_field(:image) %>
+		</div>
+
+		<div class="field">
+			<%= f.label(:name) %>
+			<%= f.text_field(:name) %>
+		</div>
+		
+		<div class="field">
+			<%= f.label(:bio) %>
+			<%= f.text_area(:bio) %>
+		</div>
+		
+		<div class="field">
+			<%= f.label(:courses, 'Courses this instructor teaches:') %>
+			<ul>
+				<% Course.all.each do |course| %>
+					<li>
+						<%= check_box_tag("instructor[course_ids][]", course.id, @instructor.courses.include?(course), { :id => "instructor_course_ids_#{course.id}"}) %>
+						<%= label_tag("instructor_course_ids_#{course.id}", course.title) %>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+	</fieldset>
+</div>
+<div id="notes">
+	<%= error_messages_for :instructor %>
+</div>
+<br clear="all" />

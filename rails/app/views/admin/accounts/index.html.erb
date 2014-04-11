@@ -1,0 +1,27 @@
+<h1>Accounts</h1>
+
+<div id="controls">
+	<%= link_to(image_tag('add.png', :alt => 'Add a new Account') + ' Add an Account', new_admin_account_path, :title => 'Add a new Account') %>
+	<p><%= page_entries_info(@accounts) %></p>
+</div>
+
+<% unless @accounts.empty? %>
+  <%= will_paginate(@accounts) %>
+	<table border="0" cellspacing="0" cellpadding="0" class="itemtable">
+		<tr>
+			<th>Email <small>(click to edit)</small></th>
+			<th>Student</th>
+			<th>Date Added</th>
+			<th>&nbsp;</th>
+		</tr>
+		<% @accounts.each do |account| %>
+			<tr class="<%= cycle('odd', 'even') %>">
+				<td><%= link_to(account.email, edit_admin_account_path(account)) %></td>
+				<td><%= account.student_name %></td>
+				<td><%= account.created_at.strftime('%m/%d/%Y') %></td>
+				<td><%= link_to(image_tag('delete.png'), admin_account_path(account), :method => :delete, :confirm => 'Are you sure you want to remove this?') %></td>
+			</tr>
+		<% end %>
+	</table>
+	<%= will_paginate(@accounts) %>
+<% end %>

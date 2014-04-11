@@ -1,0 +1,17 @@
+<div id="fields">
+	<div id="help">
+		A schedule is the date there are classes.
+	</div>
+	<fieldset>
+		<%= link_to(image_tag('help.png'), '#help', :class => 'help') %>
+		<legend>Fields</legend>
+		<div class="field">
+			<%= f.label(:date) %>
+			<%= f.date_select(:date, :start_year => Date.today.year, :order => [:day, :month, :year]) %>
+		</div>
+	</fieldset>
+</div>
+<div id="notes">
+	<%= error_messages_for :scedule %>
+</div>
+<br clear="all" />

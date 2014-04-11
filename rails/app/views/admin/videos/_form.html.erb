@@ -1,0 +1,30 @@
+<div id="fields">
+	<div id="help">
+		<ul>
+			<li>Video size is <b>335x264</b>.</li>
+			<li>Youtube Key is the video ID</b></li>
+			<li>Youtube Key Example:
+				<ul>
+					<li>http://www.youtube.com/watch?v=<b style="color: blue;">FOtJUmiUc09</b>&feature=fvst</li>
+				</ul>
+			</li>
+			<li>Kind is either <b>Adult</b> or <b>Kids</b> </li>
+		</ul>
+	</div>
+	<fieldset>
+		<%= link_to(image_tag('help.png'), '#help', :class => 'help') %>
+		<legend>Fields</legend>
+		<div class="field">
+			<%= f.label(:youtube_key) %>
+			<%= f.text_field(:youtube_key) %>
+		</div>
+		<div class="field">
+			<%= f.label(:kind) %>
+			<%= f.select(:kind, [["Adults", "adults"], ["Kids", "kids"]]) %>
+		</div>
+	</fieldset>
+</div>
+<div id="notes">
+	<%= error_messages_for :video %>
+</div>
+<br clear="all" />

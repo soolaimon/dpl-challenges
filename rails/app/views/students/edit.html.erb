@@ -1,0 +1,57 @@
+<div id="tagline">
+	&#8220;Family Fitness, Self Defense, Hard Training&#8221;
+</div>
+<div id="mainText">
+	<%= show_flash_message %>
+	<div id="notes">
+		<%= error_messages_for :student %>
+	</div>
+	<% form_for @student do |f| -%>
+		<div id="images">
+			<%= image_tag(@student.main_image.url(:thumb)) %>
+			<%= image_tag(@student.add_image1.url(:thumb)) unless @student.add_image1_file_name.nil? %>
+			<%= image_tag(@student.add_image2.url(:thumb)) unless @student.add_image2_file_name.nil? %>
+			<%= image_tag(@student.add_image3.url(:thumb)) unless @student.add_image3_file_name.nil? %>
+			<%= image_tag(@student.add_image4.url(:thumb)) unless @student.add_image4_file_name.nil? %>
+		</div>	
+		<fieldset>
+			<legend>Update Information</legend>
+			<div class="field">
+				<%= f.label(:name) %>
+				<%= f.text_field(:name) %>
+			</div>
+			<div class="field">
+				<%= f.label(:age) %>
+				<%= f.date_select(:age, :start_year => 1940, :end_year => Date.today.year, :order => [:year, :month, :day]) %>
+			</div>
+			<div class="field">
+				<%= f.label(:hometown) %>
+				<%= f.text_field(:hometown) %>
+			</div>
+			<div class="field">
+				<%= f.label(:birthplace) %>
+				<%= f.text_field(:birthplace) %>
+			</div>
+			<div class="field">
+				<%= f.label(:discipline) %>
+				<%= f.select(:discipline, Course.all.map { |d| d.title }) %>
+			</div>
+			<div class="field">
+				<%= f.label(:rank) %>
+				<%= f.text_field(:rank) %>
+			</div>
+			<div class="field">
+				<%= f.label(:strengths, 'Strengths (separate by a comma)') %>
+				<%= f.text_area(:strengths, :rows => 5, :cols => 40) %>
+			</div>
+			<div class="field">
+				<%= f.label(:bio) %>
+				<%= f.text_area(:bio) %>
+			</div>
+			<p><%= f.submit('Update') %> -or- <%= link_to('cancel', student_path(@student)) %></p>
+		</fieldset>
+		<br clear="all" />
+		
+	<% end -%>
+</div>
+<br clear="all" />

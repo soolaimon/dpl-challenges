@@ -1,0 +1,7 @@
+<h1>Update Special</h1>
+
+<% form_for @special, :url => admin_special_path(@special) do |f| -%>
+	<%= image_tag(@special.icon.url(:main)) %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+	<p><%= f.submit('Update') %> -or- <%= link_to('cancel', admin_specials_path) %></p>
+<% end -%>

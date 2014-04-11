@@ -1,0 +1,33 @@
+<div id="fields">
+	<div id="help">
+		<ul>
+			<li>Image size is <b>870x30</b>. They will be resized if they are larger.</li>
+			<li>Image type must be <b>.jpg, .png, .gif</b></li>
+			<li>Link is where the user is sent when clicking on the image</li>
+			<li>Link Examples:
+				<ul>
+					<li>Internal: <b>/some-page</b></li>
+					<li>External: <b>http://www.somewebsite.com</b></li>
+				</ul>
+			</li>
+			<li>Keep in mind, the billboard is limited to 3 images.</li>
+		</ul>
+	</div>
+	<fieldset>
+		<%= link_to(image_tag('help.png'), '#help', :class => 'help') %>
+		<legend>Fields</legend>
+		<div class="field">
+			<%= f.label(:image) %>
+			<%= f.file_field(:image) %>
+		</div>
+
+		<div class="field">
+			<%= f.label(:link) %>
+			<%= f.text_field(:link) %>
+		</div>
+	</fieldset>
+</div>
+<div id="notes">
+	<%= error_messages_for :billboard %>
+</div>
+<br clear="all" />

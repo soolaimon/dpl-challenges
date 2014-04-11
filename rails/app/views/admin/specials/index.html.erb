@@ -1,0 +1,29 @@
+<h1>Specials</h1>
+
+<div id="controls">
+	<%= link_to(image_tag('add.png', :alt => 'Add new special') + ' Add Special', new_admin_special_path, :title => 'Add new special') %>
+	<p><%= page_entries_info(@specials) %></p>
+</div>
+
+<% unless @specials.empty? %>
+  <%= will_paginate(@specials) %>
+	<table border="0" cellspacing="0" cellpadding="0" class="itemtable">
+		<tr>
+			<th>Icon <small>(click to edit)</small></th>
+			<th>Title</th>
+			<th>Link</th>
+			<th>Date Added</th>
+			<th>&nbsp;</th>
+		</tr>
+		<% @specials.each do |special| %>
+			<tr class="<%= cycle('odd', 'even') %>">
+				<td><%= link_to(image_tag(special.icon.url(:thumb)), edit_admin_special_path(special)) %></td>
+				<td><%= special.title %></td>
+				<td><%= special.link %></td>
+				<td><%= special.created_at.strftime('%m/%d/%Y') %></td>
+				<td><%= link_to(image_tag('delete.png'), admin_special_path(special), :method => :delete, :confirm => 'Are you sure you want to remove this?') %></td>
+			</tr>
+		<% end %>
+	</table>
+	<%= will_paginate(@specials) %>
+<% end %>

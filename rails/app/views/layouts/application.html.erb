@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title><%= page_title(@title) %></title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="keywords" content="<%= page_keywords(@keywords) %>" />
+    <meta name="description" content="<%= page_description(@description) %>" />
+    <meta name="robots" content="index,follow" />
+		<%= stylesheet_link_merged(:styles) %>
+  </head>
+  <body>
+		<div id="wrapper">
+			<div id="sitetop">&nbsp;</div>
+			<div id="site">
+				<div id="header">
+					<%= link_to(image_tag('logo.png', :alt => 'John\'s Gym Austin, Texas'), root_path, :id => 'logo') %>
+					<%= link_to(image_tag('logo-text.png', :alt => 'John\'s Gym Austin, Texas'), root_path, :id => 'logoText') %>
+					<div id="social">
+						<%= link_to(image_tag('icon-facebook.gif') + ' Facebook', 'http://www.facebook.com/johnsgym', :target => '_blank') %>
+						<%= link_to(image_tag('icon-twitter.gif') + ' Twitter', 'http://twitter.com/JohnsGymATX', :target => '_blank') %>
+						<%= link_to(image_tag('icon-youtube.gif') + ' YouTube', 'http://www.youtube.com/user/JohnsGymATx', :target => '_blank') %>
+					</div>
+					<div id="mainNumber">
+						CALL US AT 512.547.6739
+					</div>
+					<ul id="topnav">
+						<li><%= link_to('HOME', root_path) %></li>
+						<li><%= link_to('SCHEDULE', schedules_path) %></li>
+						<li><%= link_to('PROGRAMS', programs_path) %></li>
+						<li><%= link_to('DISCIPLINES', disciplines_path) %></li>
+						<li><%= link_to('ABOUT US', about_path) %></li>
+						<li><%= link_to('INSTRUCTORS', instructors_path) %></li>
+						<li><%= link_to('STUDENTS', students_path) %></li>
+						<li><%= link_to('CONTACT', contact_path) %></li>
+					</ul>
+					<br clear="all" />
+				</div>
+				<div id="content">
+					<%= yield %>
+				</div>
+				<div id="footer">
+				  <span style="float:right;width:400px;">John's Gym is conveniently located for residents in and around Austin, Texas including: Round Rock, Cedar Park, Leander, Pflugerville and Lakeway</span>
+					<p class="copyright">
+						&copy; www.JohnsGymATX.com. All rights reserved.<br />
+						<%= link_to_just_professionals %> by JustProfessionals.com
+					</p>
+					<p class="footlinks">
+							<%= link_to('Home', root_path) %> |
+							<%= link_to('Schedule', schedules_path) %> |
+							<%= link_to('Programs', programs_path) %> |
+							<%= link_to('Disciplines', disciplines_path) %><br />
+							<%= link_to('About Us', about_path) %> |
+							<%= link_to('Instructors', instructors_path) %> |
+							<%= link_to('Students', students_path) %> |
+							<%= link_to('Contact', contact_path) %>
+					</p>
+				</div>
+			</div>
+			<div id="sitebot">&nbsp;</div>
+		</div>
+		<%= javascript_include_merged :scripts %>
+		<%= google_analytics %>
+  </body>
+</html>

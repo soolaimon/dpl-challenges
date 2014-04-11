@@ -1,0 +1,32 @@
+<h1>Home Page</h1>
+
+<div class="box">
+	<h2>Billboards</h2>
+	<%= link_to('Manage Billboards', admin_billboards_path) %><br />
+	<%= link_to('Add new Billboard', new_admin_billboard_path) %><br />
+	<span>Total Billboards: <%= Billboard.count %></span>
+</div>
+<div class="box">
+	<h2>Specials</h2>
+	<%= link_to('Manage Specials', admin_specials_path) %><br />
+	<%= link_to('Add new Special', new_admin_special_path) %><br />
+	<span>Total Specials: <%= Special.count %></span>
+</div>
+<div class="box">
+	<h2>Gallery</h2>
+	<%= link_to('Manage Photos', admin_gallery_photos_path) %><br />
+	<%= link_to('Add new Photo', new_admin_gallery_photo_path) %><br />
+	<span>Total Photos: <%= GalleryPhoto.count %></span>
+</div>
+<div class="box">
+	<h2>Videos</h2>
+	<%= link_to('Manage Videos', admin_videos_path) %><br />
+	<%= link_to('Add new Video', new_admin_video_path) %><br />
+	<span>Total Photos: <%= Video.count %></span>
+</div>
+<div class="box">
+	<h2>Advertisements</h2>
+	<%= link_to('Manage Ads', admin_advertisements_path) %><br />
+	<%= link_to('Add new Ad', new_admin_advertisement_path) %><br />
+	<span>Total Ads: <%= Advertisement.count %></span>
+</div>

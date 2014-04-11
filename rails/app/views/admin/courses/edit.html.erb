@@ -1,0 +1,6 @@
+<h1>Update Discipline</h1>
+
+<% form_for @course, :url => admin_course_path(@course) do |f| -%>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+	<p><%= f.submit('Update') %> -or- <%= link_to('cancel', admin_courses_path) %></p>
+<% end -%>

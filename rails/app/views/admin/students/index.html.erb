@@ -1,0 +1,31 @@
+<h1>Students</h1>
+
+<div id="controls">
+	<%= link_to(image_tag('add.png', :alt => 'Add new student') + ' Add Student', new_admin_student_path, :title => 'Add new student') %>
+	<p><%= page_entries_info(@students) %></p>
+</div>
+
+<% unless @students.empty? %>
+  <%= will_paginate(@students) %>
+	<table border="0" cellspacing="0" cellpadding="0" class="itemtable">
+		<tr>
+			<th>Photo <small>(click to edit)</small></th>
+			<th>Name</th>
+			<th>Age</th>
+			<th>Rank</th>
+			<th>Date Added</th>
+			<th>&nbsp;</th>
+		</tr>
+		<% @students.each do |student| %>
+			<tr class="<%= cycle('odd', 'even') %>">
+				<td><%= link_to(image_tag(student.main_image.url(:thumb)), edit_admin_student_path(student)) %></td>
+				<td><%= student.name %></td>
+				<td><%= student.years_old %></td>
+				<td><%= student.rank %></td>
+				<td><%= student.created_at.strftime('%m/%d/%Y') %></td>
+				<td><%= link_to(image_tag('delete.png'), admin_student_path(student), :method => :delete, :confirm => 'Are you sure you want to remove this?') %></td>
+			</tr>
+		<% end %>
+	</table>
+	<%= will_paginate(@students) %>
+<% end %>

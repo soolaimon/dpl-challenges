@@ -1,0 +1,4 @@
+<% @params.each do |k,v| %>
+  <% next if ["x", "y", "authenticity_token", "action", "controller"].include?(k) %>
+	<p><%=h k %> = <%=h v %></p>
+<% end %>

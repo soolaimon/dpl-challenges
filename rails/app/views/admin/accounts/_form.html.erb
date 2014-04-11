@@ -1,0 +1,33 @@
+<div id="fields">
+	<div id="help">
+		<ul>
+			<li>Email must be valid.</li>
+			<li>Password should be more then <strong>4</strong> characters.</li>
+			<li>Password can be reset by user later.</li>
+		</ul>
+	</div>
+	<fieldset>
+		<%= link_to(image_tag('help.png'), '#help', :class => 'help') %>
+		<legend>Fields</legend>
+		<div class="field">
+			<%= f.label(:email) %>
+			<%= f.text_field(:email) %>
+		</div>
+		<div class="field">
+			<%= f.label(:password) %>
+			<%= f.password_field(:password) %>
+		</div>
+		<div class="field">
+			<%= f.label(:password_confirmation) %>
+			<%= f.password_field(:password_confirmation) %>
+		</div>
+		<div class="field">
+			<%= f.label(:student_id, 'Student') %>
+			<%= f.select(:student_id, Student.all.map { |s| [s.name, s.id] }) %>
+		</div>
+	</fieldset>
+</div>
+<div id="notes">
+	<%= error_messages_for :account %>
+</div>
+<br clear="all" />
