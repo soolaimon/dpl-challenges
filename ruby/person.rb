@@ -56,8 +56,8 @@ class Person
     end
   end
 
-  # Addes energy go current amout
-  def energy_plus(amount)
+  # adds passed in amount to energy
+  def add_energy(amount)
     @energy += amount
   end
 
