@@ -27,6 +27,7 @@ The app is currently broken. Running it fails with all kinds of errors. Please h
 1. Make the program run.
 2. Use clean code. Proper syntax, and indentation are a must.
 3. Document all methods in the person class
+4. Make all tests pass
 
 
 ## Bonus
