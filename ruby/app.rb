@@ -15,7 +15,6 @@ dude.say "That's right, I was born in #{dude.birthyear}"
 
 dude.say "My favorite color is ... " + color = %w(red orange yellow green blue purple black white).sample
 
-
 dude.say "oh, and my favorite number is " + rand.to_s
 
 dude.say "Hold on. Gonna go run and get something"

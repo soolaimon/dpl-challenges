@@ -37,7 +37,7 @@ class Person
     puts words 
   end
 
-  #  subtracts random amount of energy from person's energy level
+  #  subtracts random amount from person's energy
   def run
     @energy -= rand(5)
   end
@@ -56,9 +56,9 @@ class Person
     end
   end
 
-  # sets @energy to passed in value. Not neccessery since already attr_accessor
-  # def energy=(amount)
-  #   @energy += amount
-  # end
+  # Addes energy go current amout
+  def energy_plus(amount)
+    @energy += amount
+  end
 
 end
